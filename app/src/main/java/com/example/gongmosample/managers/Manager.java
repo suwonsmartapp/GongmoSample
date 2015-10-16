@@ -2,6 +2,7 @@ package com.example.gongmosample.managers;
 
 import android.support.v4.app.Fragment;
 
+import com.example.gongmosample.fragments.ExpandingListViewFragment;
 import com.example.gongmosample.fragments.ItemFragment;
 import com.example.gongmosample.fragments.LoadPictureFragment;
 import com.example.gongmosample.fragments.WeatherFragment;
@@ -14,10 +15,13 @@ import com.example.gongmosample.fragments.WeatherFragment;
 public class Manager {
 
     // TODO: 메뉴 순서대로 Fragment 를 배열로 지정
+    // TODO: strings.xml 에 타이틀 추가
+    // TODO: activity_main_drawer.xml 에 타이틀명 지정
     public static Class FRAGMENTS[] = {
             ItemFragment.class,
             WeatherFragment.class,
-            LoadPictureFragment.class
+            LoadPictureFragment.class,
+            ExpandingListViewFragment.class
     };
 
     private Manager() {
