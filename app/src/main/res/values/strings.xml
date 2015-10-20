@@ -18,11 +18,13 @@
     <string name="nav_menu_title_2">JSON 파싱</string>
     <string name="nav_menu_title_3">사진 동적 로딩</string>
     <string name="nav_menu_title_4">ExpandingListView</string>
+    <string name="nav_menu_title_5">Volley</string>
 
     <string-array name="nav_menu_array">
         <item>@string/nav_menu_title_1</item>
         <item>@string/nav_menu_title_2</item>
         <item>@string/nav_menu_title_3</item>
         <item>@string/nav_menu_title_4</item>
+        <item>@string/nav_menu_title_5</item>
     </string-array>
 </resources>

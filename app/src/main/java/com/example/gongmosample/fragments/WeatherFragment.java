@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
+import com.android.volley.RequestQueue;
 import com.example.gongmosample.R;
 import com.example.gongmosample.models.Weather;
 import com.example.gongmosample.views.adapters.WeatherAdapter;
@@ -23,6 +24,7 @@ import com.squareup.okhttp.Response;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.json.XML;
 
 import java.io.IOException;
 import java.util.List;
@@ -35,7 +37,8 @@ public class WeatherFragment extends Fragment implements View.OnKeyListener {
     private static final String TAG = WeatherFragment.class.getSimpleName();
 
     // 날씨 예보 제공 URL
-    private static final String URL_FORECAST = "http://api.openweathermap.org/data/2.5/forecast?q=London,us&mode=json&appid=bd82977b86bf27fb59a04b61b657fb6f";
+    private static final String MODE = "json";
+    private static final String URL_FORECAST = "http://api.openweathermap.org/data/2.5/forecast?q=London,us&mode=" + MODE + "&appid=bd82977b86bf27fb59a04b61b657fb6f";
 
     private ListView mWeatherListView;
     private WeatherAdapter mAdapter;
@@ -46,6 +49,7 @@ public class WeatherFragment extends Fragment implements View.OnKeyListener {
 
     // 클라이언트 오브젝트
     private OkHttpClient client = new OkHttpClient();
+    private RequestQueue mQueue;
 
     /**
      * url 로 부터 스트림을 읽어 String 으로 반환한다
@@ -111,10 +115,16 @@ public class WeatherFragment extends Fragment implements View.OnKeyListener {
             try {
                 // HTTP 에서 내용을 String 으로 받아 온다
                 String jsonString = getResponse(URL_FORECAST);
-                Log.d(TAG, jsonString);
-                JSONObject jsonObject = new JSONObject(jsonString);
-                JSONArray jsonArray = jsonObject.getJSONArray("list");
+//                Log.d(TAG, jsonString);
+                JSONObject jsonObject;
+                if ("xml".equals(MODE)) {
+                    jsonObject = XML.toJSONObject(jsonString);
+                } else {
+                    jsonObject = new JSONObject(jsonString);
+                }
 
+                Log.d(TAG, jsonObject.toString());
+                JSONArray jsonArray = jsonObject.getJSONArray("list");
 
                 ObjectMapper objectMapper = new ObjectMapper();
 

@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import com.example.gongmosample.fragments.ExpandingListViewFragment;
 import com.example.gongmosample.fragments.ItemFragment;
 import com.example.gongmosample.fragments.LoadPictureFragment;
+import com.example.gongmosample.fragments.VolleyFragment;
 import com.example.gongmosample.fragments.WeatherFragment;
 
 /**
@@ -21,7 +22,8 @@ public class Manager {
             ItemFragment.class,
             WeatherFragment.class,
             LoadPictureFragment.class,
-            ExpandingListViewFragment.class
+            ExpandingListViewFragment.class,
+            VolleyFragment.class
     };
 
     private Manager() {
